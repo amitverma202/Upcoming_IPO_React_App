@@ -1,86 +1,97 @@
-import React, { useContext, useEffect, useState } from "react";
-import Header from "./Header.js";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { upcomingIpo } from "./IPO-api.js";
 import { FaSignOutAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({ onLogout }) => {
-  const [ipoDetails, setIpoDetails] = useState({});
+  const [ipoDetails, setIpoDetails] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const updateIPODetails = async () => {
+    const fetchData = async () => {
       try {
-        const result = await upcomingIpo();
-        setIpoDetails(result);
+        const upcomingIpoData = await upcomingIpo();
+        setIpoDetails(upcomingIpoData);
       } catch (error) {
-        setIpoDetails({});
-        console.log(error);
+        console.error("Error fetching upcoming IPO data:", error);
       }
     };
 
-    updateIPODetails();
+    fetchData();
   }, []);
 
   const handleLogout = () => {
     onLogout();
     navigate("/");
   };
-  return (
-    // <>
-    // <div>
-    //   <Header />
-    //   <div className="ml-auto">
-    //     <button
-    //       onClick={handleLogout}
-    //       className="flex items-center p-2 bg-transparent border-none focus:outline-none space-x-0.5"
-    //     >
-    //       <FaSignOutAlt />
-    //       <span>Logout</span>
-    //     </button>
-    //   </div>
 
-    //   {/* <div>
-    //       price={ipoDetails[0].companyName}
-    //   </div> */}
-    // </div>
-    // </>
-    <div
-    className="h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand"
-  >
-    <div className="col-span-1 md:col-span-2 xl:col-span-3 row-span-1 flex justify-start items-center">
-      
-      <Header/>
-      <div className="ml-auto">
+  return (
+    <div className="flex flex-col h-screen">
+      <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-6 text-white flex justify-between items-center">
+        <h1 className="text-5xl font-bold mb-2">IPO's Dashboard</h1>
+        <Link
+          to="/exchangeRate"
+          className="text-white hover:underline flex justify-center"
+        >
+          Exchange Rates
+        </Link>
+
         <button
           onClick={handleLogout}
           className="flex items-center p-2 bg-transparent border-none focus:outline-none space-x-0.5"
         >
-          <FaSignOutAlt
-            className='text-xl'
-          />
-          <span className='ml-2'>
-            Logout
-          </span>
+          <FaSignOutAlt className="text-xl" />
+          <span className="ml-2">Logout</span>
         </button>
       </div>
+
+      <div className="flex-1 overflow-y-auto p-20 h-auto w-auto">
+        <p className="px-8 py-4 bg-gradient-to-r from-rose-500 to-sky-600 text-2xl text-black font-bold uppercase text-center">
+          Upcoming IPO's Calendar
+        </p>
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 font-bold text-lg">
+            <tr className="bg-lime-700 text-black text-lg">
+              <th scope="col" className="px-6 py-3">
+                Company name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Symbol
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Filed Date
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Offering Date
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Shares
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Volume
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {ipoDetails.map((ipo) => (
+              <tr
+                key={`ipo_${ipo.symbol}_${ipo.offeringDate}`}
+                className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+              >
+                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {ipo.companyName}
+                </td>
+                <td className="px-6 py-4">{ipo.symbol}</td>
+                <td className="px-6 py-4">{ipo.filedDate}</td>
+                <td className="px-6 py-4">{ipo.offeringDate}</td>
+                <td className="px-6 py-4">{ipo.shares}</td>
+                <td className="px-6 py-4">{ipo.volume}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div className="md:col-span-2 row-span-4">
-      {/* <Chart /> */}
-    </div>
-    <div>
-      {/* <Overview
-        symbol={stockSymbol}
-        price={quote.iexClose}
-        change={quote.iexOpen}
-        changePercent={quote.iexMarketPercent}
-        currency={stockDetails.currency}
-      /> */}
-    </div>
-    <div className="row-span-2 xl:row-span-3">
-      {/* <Details details={quote} /> */}
-    </div>
-  </div>
   );
 };
 

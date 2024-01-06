@@ -32,7 +32,7 @@ const Auth = ({ onLogin }) => {
       <div className="h-screen flex justify-center items-center bg-slate-400">
         <div className="p-6 border rounded-md bg-slate-500">
           <h1 className="text-2xl mb-4 bg-red p-6 border rounded-md bg-slate-600 text-green-500">
-            UPCOMING IPO DASHBOARD
+            STOCK IPO's DASHBOARD
           </h1>
           <h2 className="text-2xl mb-4 text-center">
             {isLogin ? "Login" : "Sign Up"}
@@ -40,7 +40,8 @@ const Auth = ({ onLogin }) => {
           <form>
             <div className="mb-4">
               <label
-                htmlFor="username" placeholder="john@gmail.com"
+                htmlFor="username"
+                placeholder="john@gmail.com"
                 className="block text-lg font-medium text-gray-300"
               >
                 Username
@@ -80,10 +81,7 @@ const Auth = ({ onLogin }) => {
           </form>
           <p className="mt-2">
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-            <span
-              className="text-white cursor-pointer"
-              onClick={handleToggle}
-            >
+            <span className="text-white cursor-pointer" onClick={handleToggle}>
               {isLogin ? "Sign up" : "Login"}
             </span>
           </p>
