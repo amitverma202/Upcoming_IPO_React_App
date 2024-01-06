@@ -60,6 +60,9 @@ const ExchangeRate = ({ onLogout }) => {
           <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 font-bold text-lg text-center">
             <tr className="w-50"></tr>
             <tr className="bg-lime-700 text-black text-lg">
+            <th scope="col" className="px-6 py-3">
+                S.No.
+              </th>
               <th scope="col" className="px-6 py-3">
                 Symbol
               </th>
@@ -69,11 +72,12 @@ const ExchangeRate = ({ onLogout }) => {
             </tr>
           </thead>
           <tbody className="text-center">
-            {exchangeIpoDetails.map((excRate) => (
+            {exchangeIpoDetails.map((excRate,idx) => (
               <tr
                 key={`exchange_${excRate.symbol}`}
                 className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
               >
+                <td className="px-6 py-4">{idx+1}</td>
                 <td className="px-6 py-4">{excRate.symbol}</td>
                 <td className="px-6 py-4">{excRate.rate}</td>
               </tr>

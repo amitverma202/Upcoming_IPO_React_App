@@ -52,6 +52,9 @@ const Dashboard = ({ onLogout }) => {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 font-bold text-lg">
             <tr className="bg-lime-700 text-black text-lg">
+            <th scope="col" className="px-6 py-3">
+                S.No.
+              </th>
               <th scope="col" className="px-6 py-3">
                 Company name
               </th>
@@ -73,11 +76,12 @@ const Dashboard = ({ onLogout }) => {
             </tr>
           </thead>
           <tbody>
-            {ipoDetails.map((ipo) => (
+            {ipoDetails.map((ipo,idx) => (
               <tr
                 key={`ipo_${ipo.symbol}_${ipo.offeringDate}`}
                 className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
               >
+                <td className="px-6 py-4">{idx+1}</td>
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {ipo.companyName}
                 </td>
