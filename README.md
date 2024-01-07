@@ -1,4 +1,4 @@
-### Upcoming IPO's Calendar Dashboard Project
+### Upcoming IPO's Calendar & Latest Exchange Rate List Dashboard Project
 
 ### OVERVIEW
 
@@ -12,6 +12,9 @@ The Upcoming IPO Dashboard is a web application built using React that provides 
 2. User Authentication: 
     Secure login functionality ensures only authorized users can access the dashboard.
 
+3. Exchange Rates 
+   Access Up-to-update Exchange rates 
+
 
 ### TECHNOLOGIES USED
 
@@ -23,9 +26,6 @@ The Upcoming IPO Dashboard is a web application built using React that provides 
 
 3. React Router: 
     For navigation within the application.
-
-4. Theming: 
-    Implementation of dark mode for a personalized user experience.
 
 ### LOGIN FEATURE 
 
@@ -48,7 +48,6 @@ Before running the application, ensure you have the following:
 
 2. Install dependencies:
 
-      cd ipo_market_app
       npm install
 
 3. Create a .env file in the root directory and add your IEX Cloud API key:
@@ -64,6 +63,8 @@ Before running the application, ensure you have the following:
 1. Login: Enter your credentials to access the dashboard.
 
 2. Explore IPO's: Navigate through the dashboard to view real-time IPO data.
+
+3. Explore latest Exchange rate list.
 
 ### CONTRIBUTING
 
