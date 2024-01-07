@@ -47,9 +47,9 @@ const ExchangeRate = ({ onLogout }) => {
           onClick={handleLogout}
           className="flex items-center p-2 bg-transparent border-none focus:outline-none space-x-0.5"
         >
-          <FaSignOutAlt className="text-xl" />
+          <FaSignOutAlt className="text-xl"/>
           <span className="ml-2">Logout</span>
-        </button>
+        </button>z
       </div>
 
       <div className="ml-50 relative overflow-x-auto shadow-md sm:rounded-lg mb-6 p-20">
@@ -69,6 +69,9 @@ const ExchangeRate = ({ onLogout }) => {
               <th scope="col" className="px-6 py-3">
                 Rate
               </th>
+              <th scope="col" className="px-6 py-3">
+                Time Stamp
+              </th>
             </tr>
           </thead>
           <tbody className="text-center">
@@ -80,6 +83,7 @@ const ExchangeRate = ({ onLogout }) => {
                 <td className="px-6 py-4">{idx+1}</td>
                 <td className="px-6 py-4">{excRate.symbol}</td>
                 <td className="px-6 py-4">{excRate.rate}</td>
+                <td className="px-6 py-4">{new Date(excRate.timestamp).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
