@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { exchangeIpo } from "./IPO-api.js";
+import { exchangeIpo } from "./IPO-Api.js";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 
 const ExchangeRate = ({ onLogout }) => {
