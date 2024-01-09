@@ -1,4 +1,4 @@
-const apiKey = "pk_d9ded09f8f0d479eaaa9411adfcb09a3"; // Replace with your Api Key
+const apiKey = ""; // Replace with your Api Key
 
 export async function upcomingIpo(query) {
   try {
