@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { upcomingIpo } from "./IPO-api.js";
+import { upcomingIpo } from "./IPO-Api.js";
 import { FaSignOutAlt } from "react-icons/fa";
 
 const Dashboard = ({ onLogout }) => {
